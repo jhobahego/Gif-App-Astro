@@ -1,8 +1,7 @@
 ---
 import "@fontsource-variable/manrope";
 
-import SearchForm from "@components/SearchForm.astro";
-
+import Header from "@components/Header.astro";
 interface Props {
 	title: string;
 }
@@ -24,9 +23,9 @@ const { title } = Astro.props;
 		<header
 			class="max-w-full px-16 py-4 gap-8 bg-gray-800 opacity-80 mb-8 sticky right-0 top-0 left-0"
 		>
-			<SearchForm />
+			<Header />
 		</header>
-		<main>
+		<main class="max-w-screen-lg min-h-screen flex flex-col mx-auto">
 			<slot />
 		</main>
 	</body>
