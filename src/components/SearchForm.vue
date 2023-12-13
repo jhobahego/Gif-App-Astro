@@ -33,7 +33,7 @@
 </template>
 
 <script setup lang="ts">
-import { reactive, ref } from 'vue';
+import { ref } from 'vue';
 import { getGifsByKeyword } from '../services/searchFormService';
 
 type media_formats = {
@@ -65,7 +65,7 @@ type Results = TenorGif[];
 const searchInput = ref("");
 const ratingSelect = ref("off");
 
-let results = reactive<Results>([]);
+const results = ref<Results>([]);
 
 const handleSubmit = async () => {
   const keyword = searchInput.value;
@@ -78,7 +78,7 @@ const handleSubmit = async () => {
   try {
     const data = await getGifsByKeyword({ keyword, rating });
 
-    results = data.results as Results;
+    results.value = data.results as Results;
   } catch (error) {
     console.error(error);
   }
